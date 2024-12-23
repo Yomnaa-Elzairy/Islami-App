@@ -22,48 +22,74 @@ class _HomeScreenState extends State<HomeScreen> {
     RadioTab(),
     TimeTab()
   ];
-
+  List<String> backgroundImages = [
+    "quran_background.png",
+    "hadeth_background.png",
+    "sebha_background.png",
+    "radio_background.png",
+    "time_background.png"
+  ];
   int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (index) {
-          currentIndex = index;
-          setState(() {});
-        },
-        backgroundColor: Color(0xffE2BE7F),
-        items: [
-          BottomNavigationBarItem(
-            backgroundColor: Color(0xffE2BE7F),
-            icon: SvgPicture.asset("assets/icons/quran.svg"),
-            label: "Quran",
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: currentIndex,
+          onTap: (index) {
+            currentIndex = index;
+            setState(() {});
+          },
+          backgroundColor: Color(0xffE2BE7F),
+          items: [
+            BottomNavigationBarItem(
+              backgroundColor: Color(0xffE2BE7F),
+              icon: SvgPicture.asset("assets/icons/quran.svg"),
+              label: "Quran",
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Color(0xffE2BE7F),
+              icon: SvgPicture.asset("assets/icons/hadeth.svg"),
+              label: "Hadeth",
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Color(0xffE2BE7F),
+              icon: SvgPicture.asset("assets/icons/sebha.svg"),
+              label: "Sebha",
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Color(0xffE2BE7F),
+              icon: SvgPicture.asset("assets/icons/radio.svg"),
+              label: "Radio",
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Color(0xffE2BE7F),
+              icon: SvgPicture.asset("assets/icons/time.svg"),
+              label: "Time",
+            ),
+          ],
+        ),
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image:
+                  AssetImage("assets/images/${backgroundImages[currentIndex]}"),
+              fit: BoxFit.fill,
+            ),
           ),
-          BottomNavigationBarItem(
-            backgroundColor: Color(0xffE2BE7F),
-            icon: SvgPicture.asset("assets/icons/hadeth.svg"),
-            label: "Hadeth",
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 32.0),
+                child: Image.asset(
+                  "assets/images/logo.png",
+                ),
+              ),
+              tabs[currentIndex],
+            ],
           ),
-          BottomNavigationBarItem(
-            backgroundColor: Color(0xffE2BE7F),
-            icon: SvgPicture.asset("assets/icons/sebha.svg"),
-            label: "Sebha",
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Color(0xffE2BE7F),
-            icon: SvgPicture.asset("assets/icons/radio.svg"),
-            label: "Radio",
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Color(0xffE2BE7F),
-            icon: SvgPicture.asset("assets/icons/time.svg"),
-            label: "Time",
-          ),
-        ],
-      ),
-      body: tabs[currentIndex],
-    );
+        ));
   }
 }
