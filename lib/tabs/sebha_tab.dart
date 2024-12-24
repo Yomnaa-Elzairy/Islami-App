@@ -29,7 +29,8 @@ class _SebhaTabState extends State<SebhaTab> {
               color: Colors.white,
               fontSize: 36,
               fontWeight: FontWeight.w700,
-              fontFamily: "assets/fonts/Janna LT Regular/Janna LT Regular.ttf"),
+              // fontFamily: "assets/fonts/Janna LT Regular/Janna LT Regular.ttf"
+              ),
         ),
         Column(
           children: [
@@ -62,8 +63,9 @@ class _SebhaTabState extends State<SebhaTab> {
                           color: Colors.white,
                           fontSize: 36,
                           fontWeight: FontWeight.w700,
-                          fontFamily:
-                              "assets/fonts/Janna LT Regular/Janna LT Regular.ttf"),
+                          // fontFamily:
+                          //     "assets/fonts/Janna LT Regular/Janna LT Regular.ttf"
+                              ),
                     ),
                     Text(
                       "$counter",
