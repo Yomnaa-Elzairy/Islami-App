@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   "assets/images/logo.png",
                 ),
               ),
-              tabs[currentIndex],
+              Expanded(child: tabs[currentIndex]),
             ],
           ),
         ));
