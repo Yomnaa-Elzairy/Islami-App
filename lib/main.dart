@@ -1,21 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/home_screen.dart';
+import 'package:islami_app/local_storage/local_storage.dart';
+import 'package:islami_app/tabs/quran/sura_service.dart';
+import 'package:islami_app/views/home_screen.dart';
+import 'package:islami_app/views/on_boarding.dart';
+import 'package:islami_app/views/sura_content.dart';
 
-void main() {
-  runApp(const IslamiApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+ await LocalStorage.initilize();
+  await SuraService.getMostRecently();
+  runApp( IslamiApp());
 }
 
+// ignore: must_be_immutable
 class IslamiApp extends StatelessWidget {
-  const IslamiApp({super.key});
-
+   IslamiApp({super.key});
+ var isfirstTime = LocalStorage.getBool("opened") ?? false;
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+   
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-      HomeScreen.widgetName:(context)=>HomeScreen()
+        OnBoarding.widgetName: (context) => OnBoarding(),
+        HomeScreen.widgetName: (context) => HomeScreen(),
+        SuraContent.widgetName: (context) => SuraContent()
       },
-      initialRoute: HomeScreen.widgetName,
+      initialRoute: isfirstTime ? HomeScreen.widgetName : OnBoarding.widgetName,
     );
   }
 }
